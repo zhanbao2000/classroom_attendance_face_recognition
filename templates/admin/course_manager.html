@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}学生课程管理系统{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <br>你可以在这里将学生添加至课程。
+        <br>请指定学生学号与课程代码。
+        <br>示例：
+        <br>学号：181451401
+        <br>课程代码：(2019-2020-1)-01401506-11093-1
+    </div>
+
+    <form method="post">
+        <label for="student_username">学生学号</label>
+        <input name="student_username" id="student_username" required>
+
+        <label for="course_id">课程代码</label>
+        <input name="course_id" id="course_id" required>
+
+        <input type="submit" value="添加">
+    </form>
+{% endblock %}

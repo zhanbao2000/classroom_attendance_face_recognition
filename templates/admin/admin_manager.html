@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}普通管理员管理系统{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    在这里管理所有的管理员身份。
+
+    <hr>
+
+    <a href="{{ url_for('admin.admin_new') }}">添加新的管理员</a>
+    <table border="1">
+        <tr>
+            {% for item in headline %}
+                <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+        {% for admin in admin_list %}
+            <tr>
+                <td>{{ admin.username }}</td>
+                <td>{{ admin.nickname }}</td>
+                <td>
+                    <a href="{{ url_for('admin.admin_delete', admin_id=admin.id) }}">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

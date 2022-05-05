@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}错误{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {{ g.pop('error') }}
+{% endblock %}

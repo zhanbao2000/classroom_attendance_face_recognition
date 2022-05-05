@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}学生照片管理系统{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <br>你可以在这里为学生添加照片。
+        <br>示例：
+        <br>学号：181451401
+        <br>照片：通过下方的上传文件
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        <label for="name">上传照片</label>
+        <input type="file" name="file" accept="image/*">
+
+        <label for="student_username">输入学生学号</label>
+        <input name="student_username" id="student_username" required>
+
+        <input type="submit" value="提交" style="margin-top: 20px;">
+    </form>
+{% endblock %}

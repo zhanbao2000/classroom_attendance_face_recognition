@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}仪表盘{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if g.user.role == 0 %}
+        {% include 'dashboard/student.html' %}
+    {% elif g.user.role == 1 %}
+        {% include 'dashboard/teacher.html' %}
+    {% elif g.user.role in [2, 3] %}
+        {% include 'dashboard/admin.html' %}
+    {% endif %}
+{% endblock %}

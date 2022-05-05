@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}注册{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="username">用户名</label>
+        <input name="username" id="username" required>
+
+        <label for="password">密码</label>
+        <input type="password" name="password" id="password" required>
+
+        <label>
+            <input type="radio" name="role" value="0" checked/>学生
+            <input type="radio" name="role" value="1"/>教师
+        </label>
+
+        <input type="submit" value="注册">
+    </form>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}考勤面板{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <br>请在课堂上拍摄全体学生的照片，确认每张脸清晰可见，然后点击“提交”按钮。
+        <br>提交后系统将在后台进行人脸识别，稍后可以在考勤记录处查看考勤结果。
+        <br>若有学生未被人脸识别系统识别，请人工添加。
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        <label for="name">上传照片</label>
+        <input type="file" name="file" accept="image/*">
+
+        <label for="course-select">选择一个课程</label>
+        <select name="course_id" id="course-select">
+            {% for course in course_list %}
+                <option value="{{ course.id }}">{{ course.name }} - {{ course.id }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="提交" style="margin-top: 20px;">
+    </form>
+
+    {% if color_block_list %}
+
+        <hr>
+
+        <div class="content">
+            🟥 缺勤学生总数：{{ count_absent }}<br>
+            <table border="1">
+                <tr>
+                    {% for item in headline %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                </tr>
+                {% for color_block, student in zip(color_block_list, student_list) %}
+                    {% if color_block == '🟥' %}
+                        <tr>
+                            <td>{{ student.username }}</td>
+                            <td>{{ student.nickname }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="content">
+            🟩 出勤学生总数：{{ count_present }}<br>
+            <table border="1">
+                <tr>
+                    {% for item in headline %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                </tr>
+                {% for color_block, student in zip(color_block_list, student_list) %}
+                    {% if color_block == '🟩' %}
+                        <tr>
+                            <td>{{ student.username }}</td>
+                            <td>{{ student.nickname }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+
+    {% endif %}
+{% endblock %}

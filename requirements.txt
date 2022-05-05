@@ -1,0 +1,5 @@
+Flask
+Werkzeug
+dlib
+numpy
+pydantic

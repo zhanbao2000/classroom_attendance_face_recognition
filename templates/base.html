@@ -1,0 +1,30 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - 基于多人人脸识别的课堂考勤系统</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+    <h1><a href="{{ url_for('index') }}">基于多人人脸识别的课堂考勤系统</a></h1>
+    <ul>
+        {% if g.user %}
+            <li><span>你好，{{ g.user.nickname }}</span>
+            <li><a href="{{ url_for('auth.logout') }}">登出</a>
+                {% else %}
+            <li><a href="{{ url_for('auth.register') }}">注册</a>
+            <li><a href="{{ url_for('auth.login') }}">登录</a>
+        {% endif %}
+    </ul>
+</nav>
+<section class="content">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+</section>
+
+<hr>
+
+<a href="javascript:history.go(-1);" style="margin: 20px;">返回上一页</a>
+
+<hr>

@@ -1,0 +1,11 @@
+{% block content %}
+    <a href="{{ url_for('admin.course_manager') }}">学生课程管理</a>
+    <br>
+    <a href="{{ url_for('admin.photo_manager') }}">学生照片管理</a>
+    <br>
+    {% if g.user.role == 3 %}
+        <a href="{{ url_for('admin.admin_manager') }}">普通管理员管理</a>
+        <br>
+    {% endif %}
+    <a href="{{ url_for('dashboard.profile') }}">个人资料</a>
+{% endblock %}
