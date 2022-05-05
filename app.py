@@ -34,6 +34,26 @@ def check_dir():
             app.logger.warning(f'{path} 文件夹不存在，将会自动创建')
             os.makedirs(path)
 
+    # 检查模型文件夹
+    if not os.path.isdir('model'):
+        app.logger.warning('模型文件夹不存在，将会自动创建')
+        os.makedirs('model')
+
+    # 检查模型完整性
+    if not all([
+        os.path.isfile('model/dlib_face_recognition_resnet_model_v1.dat'),
+        os.path.isfile('model/mmod_human_face_detector.dat'),
+        os.path.isfile('model/shape_predictor_68_face_landmarks_GTX.dat'),
+    ]):
+        app.logger.warning("""
+            'model 文件夹内缺少必要的模型文件，考勤功能将不能正常使用，请在'
+            'https://github.com/davisking/dlib-models 下载以下模型：'
+            '1. dlib_face_recognition_resnet_model_v1.dat'
+            '2. mmod_human_face_detector.dat'
+            '3. shape_predictor_68_face_landmarks_GTX.dat'
+            '并存放在 model 文件夹中，并重启服务端。'
+        """)
+
 
 def check_db():
     if not os.path.isfile(app.config['DATABASE']):
