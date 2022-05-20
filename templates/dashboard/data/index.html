@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}考勤记录与课程管理{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if g.user.role == 0 %}
+        {% include 'dashboard/data/student.html' %}
+    {% elif g.user.role == 1 %}
+        {% include 'dashboard/data/teacher.html' %}
+    {% endif %}
+{% endblock %}

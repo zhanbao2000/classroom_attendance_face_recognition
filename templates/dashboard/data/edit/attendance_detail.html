@@ -1,0 +1,21 @@
+{% block content %}
+    <table border="1">
+        <tr>
+            {% for item in headline %}
+                <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+        {% for item in course %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>
+                    <a href="{{ url_for('dashboard.teacher_course_detail', course_id=item[0]) }}">考勤详情</a>
+                    <a href="{{ url_for('dashboard.teacher_course_edit', course_id=item[0], name=item[1]) }}">编辑课程</a>
+                    <a href="{{ url_for('dashboard.teacher_course_delete', course_id=item[0]) }}">删除课程</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

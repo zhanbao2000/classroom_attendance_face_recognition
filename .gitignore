@@ -132,7 +132,7 @@ dmypy.json
 .idea/
 
 # data
-data/
+/data/
 
 # model
 model/

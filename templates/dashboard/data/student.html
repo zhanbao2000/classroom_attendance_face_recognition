@@ -1,0 +1,22 @@
+{% block content %}
+    <table border="1">
+        <tr>
+            {% for item in headline %}
+                <td>{{ item }}</td>
+            {% endfor %}
+            {% for count in range(max_record) %}
+                <td>{{ count + 1 }}</td>
+            {% endfor %}
+        </tr>
+        {% for course, record in zip(course_list, record_list) %}
+            <tr>
+                <td>{{ course.id }}</td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.teacher_nickname }}</td>
+                {% for attendance in record.attendance %}
+                    <td>{{ attendance }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

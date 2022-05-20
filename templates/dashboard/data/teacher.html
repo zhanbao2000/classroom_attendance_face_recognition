@@ -1,0 +1,24 @@
+{% block content %}
+    <a href="{{ url_for('dashboard.teacher_course_add') }}">添加课程</a>
+
+    <hr>
+
+    <table border="1">
+        <tr>
+            {% for item in headline %}
+                <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+        {% for course in course_list %}
+            <tr>
+                <td>{{ course.id }}</td>
+                <td>{{ course.name }}</td>
+                <td>
+                    <a href="{{ url_for('dashboard.attendance_detail', course_id=course.id) }}">考勤详情</a>
+                    <a href="{{ url_for('dashboard.teacher_course_edit', course_id=course.id, name=course.name) }}">编辑课程</a>
+                    <a href="{{ url_for('dashboard.teacher_course_delete', course_id=course.id) }}">删除课程</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}添加课程{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <br>请添加课程代码和课程名称。
+        <br>示例：
+        <br>课程代码：(2019-2020-1)-01401506-11093-1
+        <br>课程名称：电路
+    </div>
+
+    <form method="post">
+        <label for="course_id">课程代码</label>
+        <input name="course_id" id="course_id" required>
+
+        <label for="course_name">课程名称</label>
+        <input name="course_name" id="course_name" required>
+
+        <input type="submit" value="添加">
+    </form>
+{% endblock %}

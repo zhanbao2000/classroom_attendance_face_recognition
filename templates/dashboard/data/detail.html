@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}考勤详情{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <br>🟥表示学生本次考勤缺勤。
+        <br>🟩表示学生本次考勤正常。
+    </div>
+
+    <table border="1">
+        <tr>
+            {% for item in headline %}
+                <td>{{ item }}</td>
+            {% endfor %}
+            {% for count in range(max_record) %}
+                <td>{{ count + 1 }}</td>
+            {% endfor %}
+        </tr>
+        {% for record in record_list %}
+            <tr>
+                <td>{{ record.student_username }}</td>
+                <td>{{ record.student_nickname }}</td>
+                {% for attendance in record.attendance %}
+                    <td>{{ attendance }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

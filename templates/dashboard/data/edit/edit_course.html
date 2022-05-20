@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}编辑课程{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <br>此处只能编辑课程名称。如需修改课程代码，只能够联系管理员修改数据库，或是删除课程后重新添加。
+    </div>
+
+    <form method="post">
+        <label for="course_id">课程代码</label>
+        <input name="course_id" id="course_id" value="{{ course_id }}" disabled="disabled">
+
+        <label for="name">课程名称</label>
+        <input name="name" id="name" value="{{ name }}" required>
+
+        <input type="submit" value="提交">
+    </form>
+{% endblock %}
