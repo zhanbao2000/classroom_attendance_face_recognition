@@ -21,6 +21,9 @@ SESSION_TYPE: str = 'filesystem'
 
 # 默认管理员账号（初始化时被创建，密码为随机16位，初始化时在日志中显示）
 DEFAULT_ADMIN: str = 'superuser'
+DEFAULT_ADMIN_PASSWORD: str='123456'
+
+
 
 # 人脸识别阈值（默认 0.4）
 THRESHOLD = 0.4

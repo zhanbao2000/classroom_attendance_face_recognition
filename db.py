@@ -42,7 +42,7 @@ def init_db(file_path: Optional[str] = None):
         init_sql = f.read().decode('utf8')
 
     default_admin_username = current_app.config['DEFAULT_ADMIN']
-    default_admin_password = secrets.token_urlsafe(16)
+    default_admin_password = current_app.config['DEFAULT_ADMIN_PASSWORD']
     with Connect(file_path) as c:
         c.executescript(init_sql)
         c.execute(
